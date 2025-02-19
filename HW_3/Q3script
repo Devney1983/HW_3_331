@@ -1,0 +1,27 @@
+Script started on 2025-02-19 00:44:49+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="160" LINES="10"]
+[0;32m@Devney1983 [0m➜ [1;34m/workspaces/HW_3_331/HW_3 [0;36m([1;31mmain[0;36m) [0m$ rlwrap sbcl
+This is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* [K* [K* ()[C[Cl)o)a)d) )")")Q")3").")l")i")s")p")[C[C[K(load "Q3.lisp")
+T
+* [K* [K* ()[C[Cl)o)a)d) )"")Q")3")_")b").")l")i")s")p")[C[C[K(load "Q3_b.lisp")
+T
+* [K* [K* ()[C[Cl)o)a)d) )")")b")o")t")t")o")m")U")p")_")m")e")r")g")e")S")o")r")t").")l")i")s")p")[C[C[K(load "bottomUp_mergeSort.lisp")
+T
+* [K* [K[K* * (bottom-up-mergesort '(1 7 2 1 8 6 5 3 7 9 4)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C)[C[C[K* (bottom-up-mergesort '(1 7 2 1 8 6 5 3 7 9 4))
+T
+* (1 1 2 3 4 5 6 7 7 8 9)
+* [K* [K* * (bottom-up-mergesort '(1 7 2 1 8 6 5 3 7 9 4)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C)[C[C[K* (bottom-up-mergesort '(1 7 2 1 8 6 5 3 7 9 4))
+(1 1 2 3 4 5 6 7 7 8 9)
+* (1 1 2 3 4 5 6 7 7 8 9)
+* [K* [K* ()[C[Cq)u)i)t)[C[C[K(quit)
+[0;32m@Devney1983 [0m➜ [1;34m/workspaces/HW_3_331/HW_3 [0;36m([1;31mmain[0;36m) [0m$ exit  script
+exit
+bash: exit: script: numeric argument required
+
+Script done on 2025-02-19 00:46:12+00:00 [COMMAND_EXIT_CODE="2"]
