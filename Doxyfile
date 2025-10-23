@@ -1,118 +1,13 @@
-/**
- * @file HW_3_331.cpp
- * @brief Implementation of a non-recursive QuickSort algorithm using a stack.
- *
- * This program demonstrates the QuickSort algorithm without recursion by 
- * manually managing the call stack using the C++ STL stack container. 
- * The algorithm partitions the data and sorts it in-place.
- *
- * @date 02/15/2025
- * @author
- * David J. Devney
- * @course
- * CSCI 331
- */
-
-#include <iostream>
-#include <stack>
-#include <vector>
-
-using namespace std;
-
-/**
- * @brief Partitions a subarray around a pivot for QuickSort.
- *
- * This function chooses a pivot (the middle element of the subarray),
- * then reorders the elements so that all values smaller than the pivot 
- * appear before it and all values greater appear after it.
- *
- * @param set Reference to the vector of integers to be sorted.
- * @param start The starting index of the subarray to partition.
- * @param end The ending index of the subarray to partition.
- * @return The final index position of the pivot after partitioning.
- */
-int partition(vector<int>& set, int start, int end)
-{
-    int pivotValue, pivotIndex, mid;
-
-    mid = (start + end) / 2;
-    swap(set[start], set[mid]);
-    pivotIndex = start;
-    pivotValue = set[start];
-
-    for (int scan = start + 1; scan <= end; scan++)
-    {
-        if (set[scan] < pivotValue)
-        {
-            pivotIndex++;
-            swap(set[pivotIndex], set[scan]);
-        }
-    }
-
-    swap(set[start], set[pivotIndex]);
-    return pivotIndex;
-}
-
-/**
- * @brief Sorts a vector of integers using a non-recursive QuickSort algorithm.
- *
- * This function uses an explicit stack to replace the recursive calls 
- * typically used in QuickSort. Subarray index pairs are pushed and popped 
- * from the stack until the array is fully sorted.
- *
- * @param set Reference to the vector of integers to sort.
- * @param start The starting index of the vector (typically 0).
- * @param end The ending index of the vector (typically set.size() - 1).
- */
-void quickSort(vector<int>& set, int start, int end)
-{
-    stack<pair<int, int>> s;
-    s.push({start, end});
-    
-    while (!s.empty())
-    {
-        int start = s.top().first;
-        int end = s.top().second;
-        s.pop();
-
-        if (start < end)
-        {
-            int p = partition(set, start, end);
-
-            // Push the left and right subarrays onto the stack
-            s.push({start, p - 1});
-            s.push({p + 1, end});
-        }
-    }
-}
-
-/**
- * @brief The main function demonstrating the non-recursive QuickSort.
- *
- * Creates a sample vector of integers, prints it before sorting,
- * performs the QuickSort, and then prints the sorted result.
- *
- * @return int Returns 0 upon successful execution.
- */
-int main()
-{
-    vector<int> set = {10, 7, 8, 9, 1, 5};
-
-    cout << "Original array: ";
-    for (int num : set)
-    {
-        cout << num << " ";
-    }
-    cout << endl;
-
-    quickSort(set, 0, set.size() - 1);
-
-    cout << "Sorted array: ";
-    for (int num : set)
-    {
-        cout << num << " ";
-    }
-    cout << endl;
-    
-    return 0;
-}
+PROJECT_NAME           = "kwikSort_iterate - Non-Recursive QuickSort"
+OUTPUT_DIRECTORY       = "docs"
+INPUT                  = kwikSort_iterate.cpp
+RECURSIVE              = NO
+EXTRACT_ALL            = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = YES
+GENERATE_TREEVIEW      = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+QUIET                  = NO
