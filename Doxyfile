@@ -1,20 +1,152 @@
-PROJECT_NAME           = "Non-Recursive QuickSort"
-PROJECT_BRIEF          = "Implementation of iterative QuickSort using C++ stack"
-PROJECT_NUMBER         = "kwikSort_iterate"
-OUTPUT_DIRECTORY       = "docs"
-PROJECT_LOGO           =
-PROJECT_AUTHOR         = "David J. Devney"
-PROJECT_CLASS          = "CSCI 334"
-PROJECT_DATE           = "10/23/2025"
+#=====================================================
+# SCSU CSCI UDWR Literate Programming Configuration
+# Outstanding-Level Doxygen Setup
+#=====================================================
 
-INPUT                  = kwikSort_iterate.cpp
-RECURSIVE              = NO
+#-----------------------------------------------------
+# Project Information
+#-----------------------------------------------------
+PROJECT_NAME           = "QuickSort Iterative Project"
+PROJECT_BRIEF          = "Iterative implementation of QuickSort with detailed documentation."
+PROJECT_NUMBER         = "v1.0"
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_FOR_CPLUSPLUS = YES
+OPTIMIZE_OUTPUT_JAVA   = NO
+
+#-----------------------------------------------------
+# Input and File Settings
+#-----------------------------------------------------
+INPUT                  = ./kwikSort_iterate.cpp ./HW_3
+FILE_PATTERNS          = *.cpp *.h *.hpp *.c *.hxx
+RECURSIVE              = YES
+EXCLUDE_PATTERNS       = */build/* */bin/* */docs/*
 EXTRACT_ALL            = YES
-GENERATE_HTML          = YES
-GENERATE_LATEX         = YES
-GENERATE_TREEVIEW      = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = YES
+EXTRACT_ANON_NSPACES   = YES
+
+#-----------------------------------------------------
+# Documentation and Tagging
+#-----------------------------------------------------
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH        = .
+JAVADOC_AUTOBRIEF      = YES
+MULTILINE_CPP_IS_BRIEF = NO
+QT_AUTOBRIEF           = NO
+ALIASES                += pre="Precondition:\n" \
+                          post="Postcondition:\n" \
+                          todo="To-do:\n" \
+                          test="Test case:\n"
+BUILTIN_STL_SUPPORT    = YES
+
+#-----------------------------------------------------
+# Source Browser
+#-----------------------------------------------------
 SOURCE_BROWSER         = YES
 INLINE_SOURCES         = YES
+STRIP_CODE_COMMENTS    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+#-----------------------------------------------------
+# Output Formats
+#-----------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_DYNAMIC_SECTIONS  = YES
+HTML_TIMESTAMP         = YES
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+USE_PDFLATEX           = YES
+PDF_HYPERLINKS         = YES
+LATEX_BATCHMODE        = NO
+LATEX_HIDE_INDICES     = NO
+
+GENERATE_MAN           = YES
+MAN_OUTPUT             = man
+
+GENERATE_XML           = YES
+XML_OUTPUT             = xml
+
+GENERATE_RTF           = NO
+GENERATE_DOCBOOK       = NO
+
+#-----------------------------------------------------
+# Dot and Graphviz (UML / Call Graphs)
+#-----------------------------------------------------
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+DOT_GRAPH_MAX_NODES    = 100
+MAX_DOT_GRAPH_DEPTH    = 1000
+DOT_TRANSPARENT        = YES
+DOT_MULTI_TARGETS      = YES
+
+CLASS_DIAGRAMS         = YES
+UML_LOOK               = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+GRAPHICAL_HIERARCHY    = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+DIRECTORY_GRAPH        = YES
+DOT_UML_DETAILS        = YES
+
+#-----------------------------------------------------
+# LaTeX / Math Formulas
+#-----------------------------------------------------
+USE_MATHJAX            = YES
+MATHJAX_RELPATH        = https://cdn.jsdelivr.net/npm/mathjax@3/es5/
+FORMULA_FONTSIZE       = 12
+
+#-----------------------------------------------------
+# Warnings, To-Do, and Bug Lists
+#-----------------------------------------------------
+GENERATE_TESTLIST      = YES
+GENERATE_TODOLIST      = YES
+GENERATE_BUGLIST       = YES
+GENERATE_DEPRECATEDLIST = YES
+SHOW_USED_FILES        = YES
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+
+#-----------------------------------------------------
+# External Links and References
+#-----------------------------------------------------
+TAGFILES               =
+GENERATE_TAGFILE       = docs/tags/tagfile
+ALLEXTERNALS           = YES
+EXTERNAL_GROUPS        = YES
+REFERENCES_LINK_SOURCE = YES
+LINK_MAPS              = YES
+DOT_GRAPH_MAX_NODES    = 500
+
+#-----------------------------------------------------
+# Miscellaneous
+#-----------------------------------------------------
+TAB_SIZE               = 4
+ALIASES                += author="Author:\n" \
+                          warning="Warning:\n" \
+                          bug="Known bug:\n" \
+                          version="Version:\n" \
+                          see="See also:\n" \
+                          ref="Reference:\n"
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_GROUP_NAMES       = YES
+SORT_BY_SCOPE_NAME     = YES
+QUIET                  = NO
 WARN_IF_UNDOCUMENTED   = YES
 WARN_IF_DOC_ERROR      = YES
-QUIET                  = NO
+WARN_NO_PARAMDOC       = YES
+
+#-----------------------------------------------------
+# End of Doxyfile
+#-----------------------------------------------------
