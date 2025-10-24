@@ -1,5 +1,12 @@
-PROJECT_NAME           = "kwikSort_iterate - Non-Recursive QuickSort"
+PROJECT_NAME           = "Non-Recursive QuickSort"
+PROJECT_BRIEF          = "Implementation of iterative QuickSort using C++ stack"
+PROJECT_NUMBER         = "kwikSort_iterate"
 OUTPUT_DIRECTORY       = "docs"
+PROJECT_LOGO           =
+PROJECT_AUTHOR         = "David J. Devney"
+PROJECT_CLASS          = "CSCI 334"
+PROJECT_DATE           = "10/23/2025"
+
 INPUT                  = kwikSort_iterate.cpp
 RECURSIVE              = NO
 EXTRACT_ALL            = YES
