@@ -6,7 +6,7 @@
  * This program demonstrates an iterative version of the quicksort algorithm. 
  * It replaces recursion with an explicit stack to manage subarray partitions.
  * 
- * @authors
+ * @author
  * - David J. Devney
  *
  * @date 2025-02-15
