@@ -1,11 +1,4 @@
-#=====================================================
-# SCSU CSCI UDWR Literate Programming Configuration
-# Outstanding-Level Doxygen Setup
-#=====================================================
 
-#-----------------------------------------------------
-# Project Information
-#-----------------------------------------------------
 PROJECT_NAME           = "QuickSort Iterative Project"
 PROJECT_BRIEF          = "Iterative implementation of QuickSort with detailed documentation."
 PROJECT_NUMBER         = "v1.0"
@@ -19,9 +12,9 @@ OPTIMIZE_OUTPUT_JAVA   = NO
 #-----------------------------------------------------
 # Input and File Settings
 #-----------------------------------------------------
-INPUT                  = ./kwikSort_iterate.cpp ./HW_3
+INPUT                  = ./HW_3_331/kwikSort_iterate.cpp
 FILE_PATTERNS          = *.cpp *.h *.hpp *.c *.hxx
-RECURSIVE              = YES
+RECURSIVE              = NO
 EXCLUDE_PATTERNS       = */build/* */bin/* */docs/*
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
