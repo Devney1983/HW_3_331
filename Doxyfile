@@ -1,5 +1,5 @@
 
-PROJECT_NAME           = "QuickSort Iterative Project"
+PROJECT_NAME           = "kwikSort_iterative"
 PROJECT_BRIEF          = "Iterative implementation of QuickSort with detailed documentation."
 PROJECT_NUMBER         = "v1.0"
 OUTPUT_DIRECTORY       = docs
