@@ -1,0 +1,273 @@
+\doxysection{kwik\+Sort\+\_\+iterate.\+cpp File Reference}
+\hypertarget{kwikSort__iterate_8cpp}{}\label{kwikSort__iterate_8cpp}\index{kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}}
+
+
+Implementation of a non-\/recursive (iterative) quicksort algorithm using a stack.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$stack$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for kwik\+Sort\+\_\+iterate.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{kwikSort__iterate_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kwikSort__iterate_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\item 
+int \mbox{\hyperlink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition}} (vector$<$ int $>$ \&set, int start, int end)
+\begin{DoxyCompactList}\small\item\em Partitions a subarray around a pivot for quicksort. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quick\+Sort}} (vector$<$ int $>$ \&set, int start, int end)
+\begin{DoxyCompactList}\small\item\em Performs an iterative (non-\/recursive) quicksort on a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of a non-\/recursive (iterative) quicksort algorithm using a stack. 
+
+This program demonstrates an iterative version of the quicksort algorithm. It replaces recursion with an explicit stack to manage subarray partitions.
+
+Author\+:~\newline
+
+\begin{DoxyItemize}
+\item David J. Devney
+\end{DoxyItemize}
+
+\begin{DoxyDate}{Date}
+2025-\/02-\/15 Version\+:~\newline
+ 1.\+0 @course CSCI 331
+\end{DoxyDate}
+See also\+:~\newline
+ \doxylink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition()} See also\+:~\newline
+ \doxylink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quick\+Sort()}
+
+Warning\+:~\newline
+ Ensure sufficient stack capacity for large data sets. Known bug\+:~\newline
+ None currently known. To-\/do\+:~\newline
+ Extend to support descending order sorting or custom comparators. 
+
+Definition in file \mbox{\hyperlink{kwikSort__iterate_8cpp_source}{kwik\+Sort\+\_\+iterate.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kwikSort__iterate_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{kwikSort__iterate_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}!main@{main}}
+\index{main@{main}!kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example}{/workspaces/\+HW\+\_\+3\+\_\+331/kwik\+Sort\+\_\+iterate.\+cpp}}.\end{Desc}
+
+
+Definition at line \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{kwikSort__iterate_8cpp_source}{kwik\+Sort\+\_\+iterate.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ vector<int>\ set\ =\ \{10,\ 7,\ 8,\ 9,\ 1,\ 5\};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Original\ array:\ "{}};}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ num\ :\ set)}
+\DoxyCodeLine{00143\ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ cout\ <<\ num\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quickSort}}(set,\ 0,\ set.size()\ -\/\ 1);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Sorted\ array:\ "{}};}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ num\ :\ set)}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ cout\ <<\ num\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00158\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00099}{quick\+Sort()}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{kwikSort__iterate_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}\label{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9} 
+\index{kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}!partition@{partition}}
+\index{partition@{partition}!kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily int partition (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{set,  }\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Partitions a subarray around a pivot for quicksort. 
+
+The partition function selects a pivot value and reorders the subarray such that all elements less than the pivot are moved before it, and all elements greater than or equal to the pivot are moved after it.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em set} & The vector of integers to partition. \\
+\hline
+\mbox{\texttt{ in}}  & {\em start} & The starting index of the subarray to partition. \\
+\hline
+\mbox{\texttt{ in}}  & {\em end} & The ending index of the subarray to partition.\\
+\hline
+\end{DoxyParams}
+Precondition\+:~\newline
+ {\ttfamily start} and {\ttfamily end} must be valid indices within the bounds of {\ttfamily set}. Postcondition\+:~\newline
+ Elements in {\ttfamily set} are rearranged such that all elements before the pivot are smaller and all elements after are greater or equal.
+
+\begin{DoxyReturn}{Returns}
+The index position of the pivot after partitioning.
+\end{DoxyReturn}
+See also\+:~\newline
+ \doxylink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quick\+Sort()} \begin{DoxyNote}{Note}
+Uses median-\/of-\/three pivot selection for improved performance. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example}{/workspaces/\+HW\+\_\+3\+\_\+331/kwik\+Sort\+\_\+iterate.\+cpp}}.\end{Desc}
+
+
+Definition at line \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{kwikSort__iterate_8cpp_source}{kwik\+Sort\+\_\+iterate.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ pivotValue,\ pivotIndex,\ mid;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ mid\ =\ (start\ +\ end)\ /\ 2;}
+\DoxyCodeLine{00057\ \ \ \ \ swap(set[start],\ set[mid]);}
+\DoxyCodeLine{00058\ \ \ \ \ pivotIndex\ =\ start;}
+\DoxyCodeLine{00059\ \ \ \ \ pivotValue\ =\ set[start];}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ scan\ =\ start\ +\ 1;\ scan\ <=\ end;\ scan++)}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (set[scan]\ <\ pivotValue)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ pivotIndex++;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ swap(set[pivotIndex],\ set[scan]);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ swap(set[start],\ set[pivotIndex]);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{return}\ pivotIndex;}
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+
+
+Referenced by \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00099}{quick\+Sort()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}\label{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5} 
+\index{kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}!quickSort@{quickSort}}
+\index{quickSort@{quickSort}!kwikSort\_iterate.cpp@{kwikSort\_iterate.cpp}}
+\doxysubsubsection{\texorpdfstring{quickSort()}{quickSort()}}
+{\footnotesize\ttfamily void quick\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{set,  }\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+
+
+Performs an iterative (non-\/recursive) quicksort on a vector. 
+
+This function sorts a vector of integers in ascending order using the quicksort algorithm implemented with an explicit stack instead of recursive function calls.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em set} & The vector of integers to be sorted. \\
+\hline
+\mbox{\texttt{ in}}  & {\em start} & The starting index of the vector (typically 0). \\
+\hline
+\mbox{\texttt{ in}}  & {\em end} & The ending index of the vector (typically {\ttfamily set.\+size() -\/ 1}).\\
+\hline
+\end{DoxyParams}
+Precondition\+:~\newline
+ {\ttfamily start} and {\ttfamily end} must be valid indices in {\ttfamily set}, with {\ttfamily start \texorpdfstring{$<$}{<}= end}. Postcondition\+:~\newline
+ The vector {\ttfamily set} will be sorted in ascending order.
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+See also\+:~\newline
+ \doxylink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition()} Test case\+:~\newline
+ Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vector<int>\ nums\ =\ \{10,\ 7,\ 8,\ 9,\ 1,\ 5\};}
+\DoxyCodeLine{\mbox{\hyperlink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quickSort}}(nums,\ 0,\ nums.size()\ -\/\ 1);}
+\DoxyCodeLine{\textcolor{comment}{//\ nums\ is\ now\ \{1,\ 5,\ 7,\ 8,\ 9,\ 10\}}}
+
+\end{DoxyCode}
+ \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example}{/workspaces/\+HW\+\_\+3\+\_\+331/kwik\+Sort\+\_\+iterate.\+cpp}}.\end{Desc}
+
+
+Definition at line \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{kwikSort__iterate_8cpp_source}{kwik\+Sort\+\_\+iterate.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ stack<pair<int,\ int>>\ s;}
+\DoxyCodeLine{00102\ \ \ \ \ s.push(\{start,\ end\});}
+\DoxyCodeLine{00103\ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{while}\ (!s.empty())\ }
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ s.top().first;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\ =\ s.top().second;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ s.pop();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ <\ end)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ \mbox{\hyperlink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition}}(set,\ start,\ end);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ s.push(\{start,\ p\ -\/\ 1\});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ s.push(\{p\ +\ 1,\ end\});}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00052}{partition()}}.
+
+
+
+Referenced by \mbox{\hyperlink{kwikSort__iterate_8cpp_source_l00137}{main()}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5_icgraph}
+\end{center}
+\end{figure}

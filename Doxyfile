@@ -12,7 +12,7 @@ OPTIMIZE_OUTPUT_JAVA   = NO
 #-----------------------------------------------------
 # Input and File Settings
 #-----------------------------------------------------
-INPUT                  = ./workspaces/HW_3_331/kwikSort_iterate.cpp
+INPUT                  = .
 FILE_PATTERNS          = *.cpp *.h *.hpp *.c *.hxx
 RECURSIVE              = NO
 EXCLUDE_PATTERNS       = */build/* */bin/* */docs/*

@@ -1,0 +1,5 @@
+<map id="quickSort" name="quickSort">
+<area shape="rect" id="Node000001" title="Performs an iterative (non&#45;recursive) quicksort on a vector." alt="" coords="5,5,88,31"/>
+<area shape="rect" id="Node000002" href="$kwikSort__iterate_8cpp.html#aef20cbaf8daad4415047cf085662d1a9" title="Partitions a subarray around a pivot for quicksort." alt="" coords="136,5,213,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,15,122,15,122,21,88,21"/>
+</map>

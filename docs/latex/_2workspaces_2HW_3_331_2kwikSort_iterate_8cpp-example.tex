@@ -1,0 +1,182 @@
+\doxysection{/workspaces/\+HW\+\_\+3\+\_\+331/kwik\+Sort\+\_\+iterate.\+cpp}
+\hypertarget{_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example}{}\label{_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example}Entry point of the program.
+
+Entry point of the program.\+Demonstrates the iterative quicksort algorithm by sorting a small example vector and printing the results before and after sorting.
+
+\begin{DoxyReturn}{Returns}
+Returns 0 upon successful completion.
+\end{DoxyReturn}
+See also\+:~\newline
+ \doxylink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quick\+Sort()}
+
+Input\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Original\ array:\ 10\ 7\ 8\ 9\ 1\ 5}
+\DoxyCodeLine{Sorted\ array:\ \ \ 1\ 5\ 7\ 8\ 9\ 10}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @file\ kwikSort\_iterate.cpp}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Implementation\ of\ a\ non-\/recursive\ (iterative)\ quicksort\ algorithm\ using\ a\ stack.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ program\ demonstrates\ an\ iterative\ version\ of\ the\ quicksort\ algorithm.\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ It\ replaces\ recursion\ with\ an\ explicit\ stack\ to\ manage\ subarray\ partitions.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @author}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ David\ J.\ Devney}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @date\ 2025-\/02-\/15}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @version\ 1.0}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @course\ CSCI\ 331}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @see\ partition()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @see\ quickSort()}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @warning\ Ensure\ sufficient\ stack\ capacity\ for\ large\ data\ sets.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @bug\ None\ currently\ known.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @todo\ Extend\ to\ support\ descending\ order\ sorting\ or\ custom\ comparators.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Partitions\ a\ subarray\ around\ a\ pivot\ for\ quicksort.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ partition\ function\ selects\ a\ pivot\ value\ and\ reorders\ the\ subarray}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ such\ that\ all\ elements\ less\ than\ the\ pivot\ are\ moved\ before\ it,\ and\ all}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ elements\ greater\ than\ or\ equal\ to\ the\ pivot\ are\ moved\ after\ it.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in,out]\ set\ The\ vector\ of\ integers\ to\ partition.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in]\ start\ The\ starting\ index\ of\ the\ subarray\ to\ partition.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in]\ end\ The\ ending\ index\ of\ the\ subarray\ to\ partition.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @pre\ \`{}start`\ and\ \`{}end`\ must\ be\ valid\ indices\ within\ the\ bounds\ of\ \`{}set`.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @post\ Elements\ in\ \`{}set`\ are\ rearranged\ such\ that\ all\ elements\ before}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ the\ pivot\ are\ smaller\ and\ all\ elements\ after\ are\ greater\ or\ equal.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ The\ index\ position\ of\ the\ pivot\ after\ partitioning.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @see\ quickSort()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Uses\ median-\/of-\/three\ pivot\ selection\ for\ improved\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition}}(vector<int>\&\ set,\ \textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{int}\ end)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ pivotValue,\ pivotIndex,\ mid;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ mid\ =\ (start\ +\ end)\ /\ 2;}
+\DoxyCodeLine{\ \ \ \ swap(set[start],\ set[mid]);}
+\DoxyCodeLine{\ \ \ \ pivotIndex\ =\ start;}
+\DoxyCodeLine{\ \ \ \ pivotValue\ =\ set[start];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ scan\ =\ start\ +\ 1;\ scan\ <=\ end;\ scan++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (set[scan]\ <\ pivotValue)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ pivotIndex++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ swap(set[pivotIndex],\ set[scan]);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ swap(set[start],\ set[pivotIndex]);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ pivotIndex;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Performs\ an\ iterative\ (non-\/recursive)\ quicksort\ on\ a\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ function\ sorts\ a\ vector\ of\ integers\ in\ ascending\ order\ using}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ the\ quicksort\ algorithm\ implemented\ with\ an\ explicit\ stack\ instead}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ of\ recursive\ function\ calls.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in,out]\ set\ The\ vector\ of\ integers\ to\ be\ sorted.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in]\ start\ The\ starting\ index\ of\ the\ vector\ (typically\ 0).}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param[in]\ end\ The\ ending\ index\ of\ the\ vector\ (typically\ \`{}set.size()\ -\/\ 1`).}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @pre\ \`{}start`\ and\ \`{}end`\ must\ be\ valid\ indices\ in\ \`{}set`,\ with\ \`{}start\ <=\ end`.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @post\ The\ vector\ \`{}set`\ will\ be\ sorted\ in\ ascending\ order.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ void}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @see\ partition()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @test\ Example:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ vector<int>\ nums\ =\ \{10,\ 7,\ 8,\ 9,\ 1,\ 5\};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ quickSort(nums,\ 0,\ nums.size()\ -\/\ 1);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ nums\ is\ now\ \{1,\ 5,\ 7,\ 8,\ 9,\ 10\}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quickSort}}(vector<int>\&\ set,\ \textcolor{keywordtype}{int}\ start,\ \textcolor{keywordtype}{int}\ end)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ stack<pair<int,\ int>>\ s;}
+\DoxyCodeLine{\ \ \ \ s.push(\{start,\ end\});}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (!s.empty())\ }
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ s.top().first;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ end\ =\ s.top().second;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ s.pop();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ <\ end)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ p\ =\ \mbox{\hyperlink{kwikSort__iterate_8cpp_aef20cbaf8daad4415047cf085662d1a9}{partition}}(set,\ start,\ end);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ s.push(\{start,\ p\ -\/\ 1\});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ s.push(\{p\ +\ 1,\ end\});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Entry\ point\ of\ the\ program.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Demonstrates\ the\ iterative\ quicksort\ algorithm\ by\ sorting\ a\ small}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ example\ vector\ and\ printing\ the\ results\ before\ and\ after\ sorting.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ Returns\ 0\ upon\ successful\ completion.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @see\ quickSort()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Input:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Original\ array:\ 10\ 7\ 8\ 9\ 1\ 5}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Sorted\ array:\ \ \ 1\ 5\ 7\ 8\ 9\ 10}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{kwikSort__iterate_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ vector<int>\ set\ =\ \{10,\ 7,\ 8,\ 9,\ 1,\ 5\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Original\ array:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ num\ :\ set)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cout\ <<\ num\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{kwikSort__iterate_8cpp_ac443fcb62868fa986460a7ea1d40f9b5}{quickSort}}(set,\ 0,\ set.size()\ -\/\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Sorted\ array:\ "{}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ num\ :\ set)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cout\ <<\ num\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ cout\ <<\ endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

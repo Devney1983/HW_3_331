@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="kwikSort__iterate_8cpp" kind="file" language="C++">
+    <compoundname>kwikSort_iterate.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">stack</includes>
+    <includes local="no">vector</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>kwikSort_iterate.cpp</label>
+        <link refid="kwikSort__iterate_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="3">
+        <label>stack</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="kwikSort__iterate_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kwikSort_iterate.cpp" line="137" column="5" bodyfile="kwikSort_iterate.cpp" bodystart="137" bodyend="158"/>
+        <references refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" compoundref="kwikSort__iterate_8cpp" startline="99" endline="118">quickSort</references>
+      </memberdef>
+      <memberdef kind="function" id="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int partition</definition>
+        <argsstring>(vector&lt; int &gt; &amp;set, int start, int end)</argsstring>
+        <name>partition</name>
+        <param>
+          <type>vector&lt; int &gt; &amp;</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Partitions a subarray around a pivot for quicksort. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The partition function selects a pivot value and reorders the subarray such that all elements less than the pivot are moved before it, and all elements greater than or equal to the pivot are moved after it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector of integers to partition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The starting index of the subarray to partition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ending index of the subarray to partition.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Precondition:<linebreak/>
+ <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> must be valid indices within the bounds of <computeroutput>set</computeroutput>. Postcondition:<linebreak/>
+ Elements in <computeroutput>set</computeroutput> are rearranged such that all elements before the pivot are smaller and all elements after are greater or equal.</para>
+<para><simplesect kind="return"><para>The index position of the pivot after partitioning.</para>
+</simplesect>
+See also:<linebreak/>
+ <ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort()</ref> <simplesect kind="note"><para>Uses median-of-three pivot selection for improved performance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kwikSort_iterate.cpp" line="52" column="5" bodyfile="kwikSort_iterate.cpp" bodystart="52" bodyend="71"/>
+        <referencedby refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" compoundref="kwikSort__iterate_8cpp" startline="99" endline="118">quickSort</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void quickSort</definition>
+        <argsstring>(vector&lt; int &gt; &amp;set, int start, int end)</argsstring>
+        <name>quickSort</name>
+        <param>
+          <type>vector&lt; int &gt; &amp;</type>
+          <declname>set</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+<para>Performs an iterative (non-recursive) quicksort on a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function sorts a vector of integers in ascending order using the quicksort algorithm implemented with an explicit stack instead of recursive function calls.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">set</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector of integers to be sorted. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">start</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The starting index of the vector (typically 0). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">end</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ending index of the vector (typically <computeroutput>set.size() - 1</computeroutput>).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Precondition:<linebreak/>
+ <computeroutput>start</computeroutput> and <computeroutput>end</computeroutput> must be valid indices in <computeroutput>set</computeroutput>, with <computeroutput>start &lt;= end</computeroutput>. Postcondition:<linebreak/>
+ The vector <computeroutput>set</computeroutput> will be sorted in ascending order.</para>
+<para><simplesect kind="return"><para>void</para>
+</simplesect>
+See also:<linebreak/>
+ <ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition()</ref> Test case:<linebreak/>
+ Example: <programlisting><codeline><highlight class="normal">vector&lt;int&gt;<sp/>nums<sp/>=<sp/>{10,<sp/>7,<sp/>8,<sp/>9,<sp/>1,<sp/>5};</highlight></codeline>
+<codeline><highlight class="normal">quickSort(nums,<sp/>0,<sp/>nums.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>nums<sp/>is<sp/>now<sp/>{1,<sp/>5,<sp/>7,<sp/>8,<sp/>9,<sp/>10}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="kwikSort_iterate.cpp" line="99" column="6" bodyfile="kwikSort_iterate.cpp" bodystart="99" bodyend="118"/>
+        <references refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" compoundref="kwikSort__iterate_8cpp" startline="52" endline="71">partition</references>
+        <referencedby refid="kwikSort__iterate_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="kwikSort__iterate_8cpp" startline="137" endline="158">main</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Implementation of a non-recursive (iterative) quicksort algorithm using a stack. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This program demonstrates an iterative version of the quicksort algorithm. It replaces recursion with an explicit stack to manage subarray partitions.</para>
+<para>Author:<linebreak/>
+<itemizedlist>
+<listitem><para>David J. Devney</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="date"><para>2025-02-15 Version:<linebreak/>
+ 1.0 @course CSCI 331</para>
+</simplesect>
+See also:<linebreak/>
+ <ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition()</ref> See also:<linebreak/>
+ <ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort()</ref></para>
+<para>Warning:<linebreak/>
+ Ensure sufficient stack capacity for large data sets. Known bug:<linebreak/>
+ None currently known. To-do:<linebreak/>
+ Extend to support descending order sorting or custom comparators. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>kwikSort_iterate.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>a<sp/>non-recursive<sp/>(iterative)<sp/>quicksort<sp/>algorithm<sp/>using<sp/>a<sp/>stack.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>demonstrates<sp/>an<sp/>iterative<sp/>version<sp/>of<sp/>the<sp/>quicksort<sp/>algorithm.<sp/></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>It<sp/>replaces<sp/>recursion<sp/>with<sp/>an<sp/>explicit<sp/>stack<sp/>to<sp/>manage<sp/>subarray<sp/>partitions.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>@author</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>-<sp/>David<sp/>J.<sp/>Devney</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>@date<sp/>2025-02-15</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>@version<sp/>1.0</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>@course<sp/>CSCI<sp/>331</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>@see<sp/>partition()</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>@warning<sp/>Ensure<sp/>sufficient<sp/>stack<sp/>capacity<sp/>for<sp/>large<sp/>data<sp/>sets.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@bug<sp/>None<sp/>currently<sp/>known.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@todo<sp/>Extend<sp/>to<sp/>support<sp/>descending<sp/>order<sp/>sorting<sp/>or<sp/>custom<sp/>comparators.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stack&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Partitions<sp/>a<sp/>subarray<sp/>around<sp/>a<sp/>pivot<sp/>for<sp/>quicksort.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>The<sp/>partition<sp/>function<sp/>selects<sp/>a<sp/>pivot<sp/>value<sp/>and<sp/>reorders<sp/>the<sp/>subarray</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>such<sp/>that<sp/>all<sp/>elements<sp/>less<sp/>than<sp/>the<sp/>pivot<sp/>are<sp/>moved<sp/>before<sp/>it,<sp/>and<sp/>all</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>elements<sp/>greater<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>the<sp/>pivot<sp/>are<sp/>moved<sp/>after<sp/>it.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>set<sp/>The<sp/>vector<sp/>of<sp/>integers<sp/>to<sp/>partition.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>start<sp/>The<sp/>starting<sp/>index<sp/>of<sp/>the<sp/>subarray<sp/>to<sp/>partition.</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>end<sp/>The<sp/>ending<sp/>index<sp/>of<sp/>the<sp/>subarray<sp/>to<sp/>partition.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@pre<sp/>`start`<sp/>and<sp/>`end`<sp/>must<sp/>be<sp/>valid<sp/>indices<sp/>within<sp/>the<sp/>bounds<sp/>of<sp/>`set`.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@post<sp/>Elements<sp/>in<sp/>`set`<sp/>are<sp/>rearranged<sp/>such<sp/>that<sp/>all<sp/>elements<sp/>before</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>pivot<sp/>are<sp/>smaller<sp/>and<sp/>all<sp/>elements<sp/>after<sp/>are<sp/>greater<sp/>or<sp/>equal.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>index<sp/>position<sp/>of<sp/>the<sp/>pivot<sp/>after<sp/>partitioning.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@note<sp/>Uses<sp/>median-of-three<sp/>pivot<sp/>selection<sp/>for<sp/>improved<sp/>performance.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition</ref>(vector&lt;int&gt;&amp;<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pivotValue,<sp/>pivotIndex,<sp/>mid;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>mid<sp/>=<sp/>(start<sp/>+<sp/>end)<sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>swap(set[start],<sp/>set[mid]);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>pivotIndex<sp/>=<sp/>start;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>pivotValue<sp/>=<sp/>set[start];</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>scan<sp/>=<sp/>start<sp/>+<sp/>1;<sp/>scan<sp/>&lt;=<sp/>end;<sp/>scan++)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(set[scan]<sp/>&lt;<sp/>pivotValue)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pivotIndex++;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(set[pivotIndex],<sp/>set[scan]);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>swap(set[start],<sp/>set[pivotIndex]);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pivotIndex;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="73"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Performs<sp/>an<sp/>iterative<sp/>(non-recursive)<sp/>quicksort<sp/>on<sp/>a<sp/>vector.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>sorts<sp/>a<sp/>vector<sp/>of<sp/>integers<sp/>in<sp/>ascending<sp/>order<sp/>using</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>the<sp/>quicksort<sp/>algorithm<sp/>implemented<sp/>with<sp/>an<sp/>explicit<sp/>stack<sp/>instead</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>of<sp/>recursive<sp/>function<sp/>calls.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>set<sp/>The<sp/>vector<sp/>of<sp/>integers<sp/>to<sp/>be<sp/>sorted.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>start<sp/>The<sp/>starting<sp/>index<sp/>of<sp/>the<sp/>vector<sp/>(typically<sp/>0).</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>end<sp/>The<sp/>ending<sp/>index<sp/>of<sp/>the<sp/>vector<sp/>(typically<sp/>`set.size()<sp/>-<sp/>1`).</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/>*<sp/>@pre<sp/>`start`<sp/>and<sp/>`end`<sp/>must<sp/>be<sp/>valid<sp/>indices<sp/>in<sp/>`set`,<sp/>with<sp/>`start<sp/>&lt;=<sp/>end`.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@post<sp/>The<sp/>vector<sp/>`set`<sp/>will<sp/>be<sp/>sorted<sp/>in<sp/>ascending<sp/>order.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>@return<sp/>void</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/>*<sp/>@see<sp/>partition()</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/>*<sp/>@test<sp/>Example:</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/>*<sp/>@code</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/>*<sp/>vector&lt;int&gt;<sp/>nums<sp/>=<sp/>{10,<sp/>7,<sp/>8,<sp/>9,<sp/>1,<sp/>5};</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>quickSort(nums,<sp/>0,<sp/>nums.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>//<sp/>nums<sp/>is<sp/>now<sp/>{1,<sp/>5,<sp/>7,<sp/>8,<sp/>9,<sp/>10}</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort</ref>(vector&lt;int&gt;&amp;<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end)</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>stack&lt;pair&lt;int,<sp/>int&gt;&gt;<sp/>s;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>s.push({start,<sp/>end});</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!s.empty())<sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>s.top().first;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>s.top().second;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.pop();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start<sp/>&lt;<sp/>end)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p<sp/>=<sp/><ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition</ref>(set,<sp/>start,<sp/>end);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.push({start,<sp/>p<sp/>-<sp/>1});</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.push({p<sp/>+<sp/>1,<sp/>end});</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="120"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Entry<sp/>point<sp/>of<sp/>the<sp/>program.</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/>*<sp/>Demonstrates<sp/>the<sp/>iterative<sp/>quicksort<sp/>algorithm<sp/>by<sp/>sorting<sp/>a<sp/>small</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/>*<sp/>example<sp/>vector<sp/>and<sp/>printing<sp/>the<sp/>results<sp/>before<sp/>and<sp/>after<sp/>sorting.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@return<sp/>Returns<sp/>0<sp/>upon<sp/>successful<sp/>completion.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@example</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>Input:</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>@code</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>Original<sp/>array:<sp/>10<sp/>7<sp/>8<sp/>9<sp/>1<sp/>5</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/>Sorted<sp/>array:<sp/><sp/><sp/>1<sp/>5<sp/>7<sp/>8<sp/>9<sp/>10</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="kwikSort__iterate_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>set<sp/>=<sp/>{10,<sp/>7,<sp/>8,<sp/>9,<sp/>1,<sp/>5};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Original<sp/>array:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num<sp/>:<sp/>set)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>num<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort</ref>(set,<sp/>0,<sp/>set.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sorted<sp/>array:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num<sp/>:<sp/>set)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>num<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="kwikSort_iterate.cpp"/>
+  </compounddef>
+</doxygen>

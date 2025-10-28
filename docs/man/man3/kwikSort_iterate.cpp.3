@@ -1,0 +1,240 @@
+.TH "kwikSort_iterate.cpp" 3 "Tue Oct 28 2025 21:11:16" "Version v1.0" "kwikSort_iterative" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kwikSort_iterate.cpp \- Implementation of a non-recursive (iterative) quicksort algorithm using a stack\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <stack>\fP
+.br
+\fC#include <vector>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.ti -1c
+.RI "int \fBpartition\fP (vector< int > &set, int start, int end)"
+.br
+.RI "Partitions a subarray around a pivot for quicksort\&. "
+.ti -1c
+.RI "void \fBquickSort\fP (vector< int > &set, int start, int end)"
+.br
+.RI "Performs an iterative (non-recursive) quicksort on a vector\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of a non-recursive (iterative) quicksort algorithm using a stack\&. 
+
+This program demonstrates an iterative version of the quicksort algorithm\&. It replaces recursion with an explicit stack to manage subarray partitions\&.
+.PP
+Author:
+.br
+.IP "\(bu" 2
+David J\&. Devney
+.PP
+.PP
+\fBDate\fP
+.RS 4
+2025-02-15 Version:
+.br
+ 1\&.0 @course CSCI 331
+.RE
+.PP
+See also:
+.br
+ \fBpartition()\fP See also:
+.br
+ \fBquickSort()\fP
+.PP
+Warning:
+.br
+ Ensure sufficient stack capacity for large data sets\&. Known bug:
+.br
+ None currently known\&. To-do:
+.br
+ Extend to support descending order sorting or custom comparators\&. 
+.PP
+Definition in file \fBkwikSort_iterate\&.cpp\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main ()"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fB/workspaces/HW_3_331/kwikSort_iterate\&.cpp\fP\&.
+.PP
+Definition at line \fB137\fP of file \fBkwikSort_iterate\&.cpp\fP\&..PP
+.nf
+138 {
+139     vector<int> set = {10, 7, 8, 9, 1, 5};
+140 
+141     cout << "Original array: ";
+142     for (int num : set)
+143     {
+144         cout << num << " ";
+145     }
+146     cout << endl;
+147 
+148     quickSort(set, 0, set\&.size() \- 1);
+149 
+150     cout << "Sorted array: ";
+151     for (int num : set)
+152     {
+153         cout << num << " ";
+154     }
+155     cout << endl;
+156 
+157     return 0;
+158 }
+.fi
+
+.PP
+References \fBquickSort()\fP\&.
+.SS "int partition (vector< int > & set, int start, int end)"
+
+.PP
+Partitions a subarray around a pivot for quicksort\&. The partition function selects a pivot value and reorders the subarray such that all elements less than the pivot are moved before it, and all elements greater than or equal to the pivot are moved after it\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIset\fP The vector of integers to partition\&. 
+.br
+\fIstart\fP The starting index of the subarray to partition\&. 
+.br
+\fIend\fP The ending index of the subarray to partition\&.
+.RE
+.PP
+Precondition:
+.br
+ \fCstart\fP and \fCend\fP must be valid indices within the bounds of \fCset\fP\&. Postcondition:
+.br
+ Elements in \fCset\fP are rearranged such that all elements before the pivot are smaller and all elements after are greater or equal\&.
+.PP
+\fBReturns\fP
+.RS 4
+The index position of the pivot after partitioning\&.
+.RE
+.PP
+See also:
+.br
+ \fBquickSort()\fP 
+.PP
+\fBNote\fP
+.RS 4
+Uses median-of-three pivot selection for improved performance\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fB/workspaces/HW_3_331/kwikSort_iterate\&.cpp\fP\&.
+.PP
+Definition at line \fB52\fP of file \fBkwikSort_iterate\&.cpp\fP\&..PP
+.nf
+53 {
+54     int pivotValue, pivotIndex, mid;
+55 
+56     mid = (start + end) / 2;
+57     swap(set[start], set[mid]);
+58     pivotIndex = start;
+59     pivotValue = set[start];
+60 
+61     for (int scan = start + 1; scan <= end; scan++)
+62     {
+63         if (set[scan] < pivotValue)
+64         {
+65             pivotIndex++;
+66             swap(set[pivotIndex], set[scan]);
+67         }
+68     }
+69     swap(set[start], set[pivotIndex]);
+70     return pivotIndex;
+71 }
+.fi
+
+.PP
+Referenced by \fBquickSort()\fP\&.
+.SS "void quickSort (vector< int > & set, int start, int end)"
+
+.PP
+Performs an iterative (non-recursive) quicksort on a vector\&. This function sorts a vector of integers in ascending order using the quicksort algorithm implemented with an explicit stack instead of recursive function calls\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIset\fP The vector of integers to be sorted\&. 
+.br
+\fIstart\fP The starting index of the vector (typically 0)\&. 
+.br
+\fIend\fP The ending index of the vector (typically \fCset\&.size() - 1\fP)\&.
+.RE
+.PP
+Precondition:
+.br
+ \fCstart\fP and \fCend\fP must be valid indices in \fCset\fP, with \fCstart <= end\fP\&. Postcondition:
+.br
+ The vector \fCset\fP will be sorted in ascending order\&.
+.PP
+\fBReturns\fP
+.RS 4
+void
+.RE
+.PP
+See also:
+.br
+ \fBpartition()\fP Test case:
+.br
+ Example: 
+.PP
+.nf
+vector<int> nums = {10, 7, 8, 9, 1, 5};
+quickSort(nums, 0, nums\&.size() \- 1);
+// nums is now {1, 5, 7, 8, 9, 10}
+
+.fi
+.PP
+ 
+.PP
+\fBExamples\fP
+.in +1c
+\fB/workspaces/HW_3_331/kwikSort_iterate\&.cpp\fP\&.
+.PP
+Definition at line \fB99\fP of file \fBkwikSort_iterate\&.cpp\fP\&..PP
+.nf
+100 {
+101     stack<pair<int, int>> s;
+102     s\&.push({start, end});
+103     
+104     while (!s\&.empty()) 
+105     {
+106         int start = s\&.top()\&.first;
+107         int end = s\&.top()\&.second;
+108         s\&.pop();
+109 
+110         if (start < end)
+111         {
+112             int p = partition(set, start, end);
+113 
+114             s\&.push({start, p \- 1});
+115             s\&.push({p + 1, end});
+116         }
+117     }
+118 }
+.fi
+
+.PP
+References \fBpartition()\fP\&.
+.PP
+Referenced by \fBmain()\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for kwikSort_iterative from the source code\&.

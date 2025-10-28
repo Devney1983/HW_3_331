@@ -45,7 +45,7 @@ using namespace std;
  *
  * @return The index position of the pivot after partitioning.
  *
- * @exception None
+ *
  * @see quickSort()
  * @note Uses median-of-three pivot selection for improved performance.
  */
@@ -87,7 +87,7 @@ int partition(vector<int>& set, int start, int end)
  *
  * @return void
  *
- * @exception None
+ * 
  * @see partition()
  * @test Example:
  * @code

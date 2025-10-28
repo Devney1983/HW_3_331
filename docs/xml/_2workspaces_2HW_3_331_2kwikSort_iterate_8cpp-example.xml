@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="_2workspaces_2HW_3_331_2kwikSort_iterate_8cpp-example" kind="example">
+    <compoundname>/workspaces/HW_3_331/kwikSort_iterate.cpp</compoundname>
+    <briefdescription>
+<para>Entry point of the program. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Entry point of the program.Demonstrates the iterative quicksort algorithm by sorting a small example vector and printing the results before and after sorting.</para>
+<para><simplesect kind="return"><para>Returns 0 upon successful completion.</para>
+</simplesect>
+See also:<linebreak/>
+ <ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort()</ref></para>
+<para>Input: <programlisting><codeline><highlight class="normal">Original<sp/>array:<sp/>10<sp/>7<sp/>8<sp/>9<sp/>1<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">Sorted<sp/>array:<sp/><sp/><sp/>1<sp/>5<sp/>7<sp/>8<sp/>9<sp/>10</highlight></codeline>
+</programlisting> <programlisting filename="/workspaces/HW_3_331/kwikSort_iterate.cpp"><codeline><highlight class="comment">/**</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@file<sp/>kwikSort_iterate.cpp</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>a<sp/>non-recursive<sp/>(iterative)<sp/>quicksort<sp/>algorithm<sp/>using<sp/>a<sp/>stack.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>program<sp/>demonstrates<sp/>an<sp/>iterative<sp/>version<sp/>of<sp/>the<sp/>quicksort<sp/>algorithm.<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>It<sp/>replaces<sp/>recursion<sp/>with<sp/>an<sp/>explicit<sp/>stack<sp/>to<sp/>manage<sp/>subarray<sp/>partitions.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@author</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>-<sp/>David<sp/>J.<sp/>Devney</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@date<sp/>2025-02-15</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@version<sp/>1.0</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@course<sp/>CSCI<sp/>331</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@see<sp/>partition()</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@warning<sp/>Ensure<sp/>sufficient<sp/>stack<sp/>capacity<sp/>for<sp/>large<sp/>data<sp/>sets.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@bug<sp/>None<sp/>currently<sp/>known.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@todo<sp/>Extend<sp/>to<sp/>support<sp/>descending<sp/>order<sp/>sorting<sp/>or<sp/>custom<sp/>comparators.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stack&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline><highlight class="comment">/**</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@brief<sp/>Partitions<sp/>a<sp/>subarray<sp/>around<sp/>a<sp/>pivot<sp/>for<sp/>quicksort.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>The<sp/>partition<sp/>function<sp/>selects<sp/>a<sp/>pivot<sp/>value<sp/>and<sp/>reorders<sp/>the<sp/>subarray</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>such<sp/>that<sp/>all<sp/>elements<sp/>less<sp/>than<sp/>the<sp/>pivot<sp/>are<sp/>moved<sp/>before<sp/>it,<sp/>and<sp/>all</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>elements<sp/>greater<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>the<sp/>pivot<sp/>are<sp/>moved<sp/>after<sp/>it.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>set<sp/>The<sp/>vector<sp/>of<sp/>integers<sp/>to<sp/>partition.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>start<sp/>The<sp/>starting<sp/>index<sp/>of<sp/>the<sp/>subarray<sp/>to<sp/>partition.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>end<sp/>The<sp/>ending<sp/>index<sp/>of<sp/>the<sp/>subarray<sp/>to<sp/>partition.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@pre<sp/>`start`<sp/>and<sp/>`end`<sp/>must<sp/>be<sp/>valid<sp/>indices<sp/>within<sp/>the<sp/>bounds<sp/>of<sp/>`set`.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@post<sp/>Elements<sp/>in<sp/>`set`<sp/>are<sp/>rearranged<sp/>such<sp/>that<sp/>all<sp/>elements<sp/>before</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>pivot<sp/>are<sp/>smaller<sp/>and<sp/>all<sp/>elements<sp/>after<sp/>are<sp/>greater<sp/>or<sp/>equal.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@return<sp/>The<sp/>index<sp/>position<sp/>of<sp/>the<sp/>pivot<sp/>after<sp/>partitioning.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@note<sp/>Uses<sp/>median-of-three<sp/>pivot<sp/>selection<sp/>for<sp/>improved<sp/>performance.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition</ref>(vector&lt;int&gt;&amp;<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pivotValue,<sp/>pivotIndex,<sp/>mid;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mid<sp/>=<sp/>(start<sp/>+<sp/>end)<sp/>/<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>swap(set[start],<sp/>set[mid]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pivotIndex<sp/>=<sp/>start;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pivotValue<sp/>=<sp/>set[start];</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>scan<sp/>=<sp/>start<sp/>+<sp/>1;<sp/>scan<sp/>&lt;=<sp/>end;<sp/>scan++)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(set[scan]<sp/>&lt;<sp/>pivotValue)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pivotIndex++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(set[pivotIndex],<sp/>set[scan]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>swap(set[start],<sp/>set[pivotIndex]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pivotIndex;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline><highlight class="comment">/**</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@brief<sp/>Performs<sp/>an<sp/>iterative<sp/>(non-recursive)<sp/>quicksort<sp/>on<sp/>a<sp/>vector.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>This<sp/>function<sp/>sorts<sp/>a<sp/>vector<sp/>of<sp/>integers<sp/>in<sp/>ascending<sp/>order<sp/>using</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>the<sp/>quicksort<sp/>algorithm<sp/>implemented<sp/>with<sp/>an<sp/>explicit<sp/>stack<sp/>instead</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>of<sp/>recursive<sp/>function<sp/>calls.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>set<sp/>The<sp/>vector<sp/>of<sp/>integers<sp/>to<sp/>be<sp/>sorted.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>start<sp/>The<sp/>starting<sp/>index<sp/>of<sp/>the<sp/>vector<sp/>(typically<sp/>0).</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>end<sp/>The<sp/>ending<sp/>index<sp/>of<sp/>the<sp/>vector<sp/>(typically<sp/>`set.size()<sp/>-<sp/>1`).</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@pre<sp/>`start`<sp/>and<sp/>`end`<sp/>must<sp/>be<sp/>valid<sp/>indices<sp/>in<sp/>`set`,<sp/>with<sp/>`start<sp/>&lt;=<sp/>end`.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@post<sp/>The<sp/>vector<sp/>`set`<sp/>will<sp/>be<sp/>sorted<sp/>in<sp/>ascending<sp/>order.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@return<sp/>void</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@see<sp/>partition()</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@test<sp/>Example:</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@code</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>vector&lt;int&gt;<sp/>nums<sp/>=<sp/>{10,<sp/>7,<sp/>8,<sp/>9,<sp/>1,<sp/>5};</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>quickSort(nums,<sp/>0,<sp/>nums.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>//<sp/>nums<sp/>is<sp/>now<sp/>{1,<sp/>5,<sp/>7,<sp/>8,<sp/>9,<sp/>10}</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort</ref>(vector&lt;int&gt;&amp;<sp/>set,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stack&lt;pair&lt;int,<sp/>int&gt;&gt;<sp/>s;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>s.push({start,<sp/>end});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!s.empty())<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>start<sp/>=<sp/>s.top().first;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>s.top().second;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.pop();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(start<sp/>&lt;<sp/>end)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>p<sp/>=<sp/><ref refid="kwikSort__iterate_8cpp_1aef20cbaf8daad4415047cf085662d1a9" kindref="member">partition</ref>(set,<sp/>start,<sp/>end);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.push({start,<sp/>p<sp/>-<sp/>1});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s.push({p<sp/>+<sp/>1,<sp/>end});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline><highlight class="comment">/**</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@brief<sp/>Entry<sp/>point<sp/>of<sp/>the<sp/>program.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@details</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Demonstrates<sp/>the<sp/>iterative<sp/>quicksort<sp/>algorithm<sp/>by<sp/>sorting<sp/>a<sp/>small</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>example<sp/>vector<sp/>and<sp/>printing<sp/>the<sp/>results<sp/>before<sp/>and<sp/>after<sp/>sorting.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@return<sp/>Returns<sp/>0<sp/>upon<sp/>successful<sp/>completion.</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@see<sp/>quickSort()</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@example</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Input:</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@code</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Original<sp/>array:<sp/>10<sp/>7<sp/>8<sp/>9<sp/>1<sp/>5</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>Sorted<sp/>array:<sp/><sp/><sp/>1<sp/>5<sp/>7<sp/>8<sp/>9<sp/>10</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*<sp/>@endcode</highlight></codeline>
+<codeline><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="kwikSort__iterate_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;int&gt;<sp/>set<sp/>=<sp/>{10,<sp/>7,<sp/>8,<sp/>9,<sp/>1,<sp/>5};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Original<sp/>array:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num<sp/>:<sp/>set)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>num<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="kwikSort__iterate_8cpp_1ac443fcb62868fa986460a7ea1d40f9b5" kindref="member">quickSort</ref>(set,<sp/>0,<sp/>set.size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Sorted<sp/>array:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num<sp/>:<sp/>set)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>num<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="kwikSort_iterate.cpp"/>
+  </compounddef>
+</doxygen>
