@@ -5,12 +5,14 @@
  * @details
  * This program demonstrates an iterative version of the quicksort algorithm. 
  * It replaces recursion with an explicit stack to manage subarray partitions.
+ * The user enters how many integers to sort and then the integers themselves.
+ * The program displays the original array and the sorted array in ascending order.
  * 
  * @author
  * - David J. Devney
  *
  * @date 2025-02-15
- * @version 1.0
+ * @version 1.1
  * @course CSCI 331
  *
  * @see partition()
@@ -30,24 +32,11 @@ using namespace std;
 /**
  * @brief Partitions a subarray around a pivot for quicksort.
  *
- * @details
- * The partition function selects a pivot value and reorders the subarray
- * such that all elements less than the pivot are moved before it, and all
- * elements greater than or equal to the pivot are moved after it.
- *
  * @param[in,out] set The vector of integers to partition.
  * @param[in] start The starting index of the subarray to partition.
  * @param[in] end The ending index of the subarray to partition.
  *
- * @pre `start` and `end` must be valid indices within the bounds of `set`.
- * @post Elements in `set` are rearranged such that all elements before
- *       the pivot are smaller and all elements after are greater or equal.
- *
  * @return The index position of the pivot after partitioning.
- *
- *
- * @see quickSort()
- * @note Uses median-of-three pivot selection for improved performance.
  */
 int partition(vector<int>& set, int start, int end)
 {
@@ -73,28 +62,9 @@ int partition(vector<int>& set, int start, int end)
 /**
  * @brief Performs an iterative (non-recursive) quicksort on a vector.
  *
- * @details
- * This function sorts a vector of integers in ascending order using
- * the quicksort algorithm implemented with an explicit stack instead
- * of recursive function calls.
- *
  * @param[in,out] set The vector of integers to be sorted.
  * @param[in] start The starting index of the vector (typically 0).
  * @param[in] end The ending index of the vector (typically `set.size() - 1`).
- *
- * @pre `start` and `end` must be valid indices in `set`, with `start <= end`.
- * @post The vector `set` will be sorted in ascending order.
- *
- * @return void
- *
- * 
- * @see partition()
- * @test Example:
- * @code
- * vector<int> nums = {10, 7, 8, 9, 1, 5};
- * quickSort(nums, 0, nums.size() - 1);
- * // nums is now {1, 5, 7, 8, 9, 10}
- * @endcode
  */
 void quickSort(vector<int>& set, int start, int end)
 {
@@ -118,27 +88,36 @@ void quickSort(vector<int>& set, int start, int end)
 }
 
 /**
- * @brief Entry point of the program.
+ * @brief Entry point of the program with user interaction.
  *
  * @details
- * Demonstrates the iterative quicksort algorithm by sorting a small
- * example vector and printing the results before and after sorting.
+ * Prompts the user to enter the number of integers to sort,
+ * then reads the integers, displays the original list,
+ * sorts it using iterative quicksort, and displays the sorted result.
  *
  * @return Returns 0 upon successful completion.
- *
- * @see quickSort()
- * @example
- * Input:
- * @code
- * Original array: 10 7 8 9 1 5
- * Sorted array:   1 5 7 8 9 10
- * @endcode
  */
 int main()
 {
-    vector<int> set = {10, 7, 8, 9, 1, 5};
+    int n;
+    cout << "Enter the number of elements to sort: ";
+    cin >> n;
 
-    cout << "Original array: ";
+    // Validate input
+    if (n <= 0)
+    {
+        cerr << "Error: The number of elements must be positive." << endl;
+        return 1;
+    }
+
+    vector<int> set(n);
+    cout << "Enter " << n << " integers:" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> set[i];
+    }
+
+    cout << "\nOriginal array:" << endl;
     for (int num : set)
     {
         cout << num << " ";
@@ -147,7 +126,7 @@ int main()
 
     quickSort(set, 0, set.size() - 1);
 
-    cout << "Sorted array: ";
+    cout << "\nSorted array (ascending):" << endl;
     for (int num : set)
     {
         cout << num << " ";
