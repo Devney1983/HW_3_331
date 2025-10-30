@@ -1,0 +1,100 @@
+CSCI 301
+Computer Science 2
+Project: User Document — kwikSort_iterate.cpp
+Program Description
+
+The program kwikSort_iterate.cpp implements an iterative version of the quicksort 
+algorithm to arrange a list of integers into ascending order. 
+
+Unlike the recursive quicksort, this implementation uses an explicit stack to manage
+sublists that must be sorted, eliminating the need for recursive function calls.
+
+The program reads a collection of integer values, sorts them using the iterative 
+quicksort method, and displays the sorted output. It demonstrates efficient sorting 
+using partitioning and stack-based iteration.
+
+----Installation && Compilation----
+The program requires a C++ compiler that supports C++ '11 or later.
+
+To compile and link the program, simply enter the following command at the terminal:
+
+      g++ -o kwikSort_iterate kwikSort_iterate.cpp
+
+--this commmand will create an executable file named kwikSort_iterate.
+
+----Running the Program----
+
+To run the program, just type:
+
+    ./kwikSort_iterate (Linux/macOS)
+
+    kwikSort_iterate.exe (Windows PowerShell or Command Prompt)
+
+The program will now prompt user for:
+
+    1. The number of elements to sort.
+    2. The integer values to be sorted. 
+
+  After user provides all which is requested, the program sorts the integers
+  and displays both the original and the sorted lists. 
+
+When run, the program automatically:
+
+    1. Displays the original unsorted array.
+    2. Sorts the array using the iterative quicksort algorithm.
+    3. Displays the sorted array in ascending order.
+
+----Inputs----
+The program will prompt the user for:
+
+    1. An integer N, representing how many numbers to sort.
+    2. N integers, separated by spaces or entered one per line.
+
+EXAMPLE
+Enter the number of elements to sort: 8
+Enter 8 integers:
+45 12 89 33 27 10 50 71
+
+
+----Outputs----
+
+Program displays both the unsorted and sorted lists:
+
+Original array:
+45 12 89 33 27 10 50 71
+
+Sorted array (ascending):
+10 12 27 33 45 50 71 89
+
+----Example Session----
+
+prompt> ./kwikSort_iterate
+Enter the number of elements to sort: 6
+Enter 6 integers:
+88 21 5 37 42 13
+
+Original array:
+88 21 5 37 42 13
+
+Sorted array (ascending):
+5 13 21 37 42 88
+
+----Algorithm Overview----
+
+Algorithm used: Iterative (non recursive) Quicksort. 
+
+  partition() - Divides the list around the pivot point, or element. 
+  quickSort() - Uses an explicit stack instead of recursion to manage partitions.
+
+Pivot Strategy: Median-of-three pivot selection for improved balance.
+
+Complexity:
+
+    Average case: O(n log n)
+    Worst case: O(n²)
+
+Advantages: Avoids deep recursion stack usage for large datasets.
+
+----Error Handling----
+
+  
